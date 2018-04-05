@@ -1,24 +1,23 @@
 ---
 layout: post
 title:  "Jekyll 搭建静态博客"
-date:   2015-02-15 22:14:54
+date:   2018-04-05 21:08:15
 categories: jekyll
 tags: jekyll RubyGems
+excerpt: 记录搭建博客中遇到的各种坑！
 ---
 
 * content
 {:toc}
 
-一直以来都想搭建一个自己的博客，但是近半年做项目太忙，再加上教研室的网络很坑爹，所以也一直没顾得上。之前用过 WordPress 托管在免费的京东云擎上，但是速度太慢。在知乎上看到一些相关的内容，于是选择了在github上用jekyll搭建博客。
 
 
 
 
-
-## 搭建过程
+## 搭建过程 - 所有操作均在cmd上运行
 
 在jekyll的官网上 [http://jekyllrb.com/](http://jekyllrb.com/) 其实已经说得比较明白了，我在这里还是简单的说一下吧。我用的是Windows系统。    
-主要环节有：安装Ruby，安装RubyGems，安装jekyll，安装代码高亮插件，安装node.js
+主要环节有：安装Ruby，安装RubyGems，安装jekyll
 
 ### 安装Ruby
 
@@ -74,6 +73,7 @@ cd到博客文件夹，开启服务器
 
 watch为了检测文件夹内的变化，即修改后不需要重新启动jekyll
 
+
 我的环境下启动报错(你的可能没有)，再安装yajl-ruby和rouge  
 
 ![](http://ww4.sinaimg.cn/large/7011d6cfjw1f2ue4nelnxj20dd077q49.jpg)
@@ -90,15 +90,33 @@ watch为了检测文件夹内的变化，即修改后不需要重新启动jekyll
 
 ![](http://ww2.sinaimg.cn/large/7011d6cfjw1f2ue5f3j9cj20je0gyq7a.jpg)
 
+### 遇到的坑
+
+所有的操作都是在cmd上运行的,一开始不知道还以为是在gem或jekyll上
+
+在jekyll new name创建新的博客时
+
+![](https://thumbnail0.baidupcs.com/thumbnail/c4d0abb5cb2cf0f28cd84dc5e5eb456e?fid=858303348-250528-485591459352657&time=1522933200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-achi0U2evvGyR%2BpM%2BQ%2FxNIu1NdA%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=2200762206839855992&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+
+一直卡在这个这里,后来换了个gem源就不会了。
+
+gem sources --remove https://rubygems.org/
+
+gem sources -a https://ruby.taobao.org/
+
+gem sources -l 
+
+出现如图,代表成功了
+
+![](https://thumbnail0.baidupcs.com/thumbnail/a2b047d0324b2c1f49126a20b3cfa27f?fid=858303348-250528-930775432448998&time=1522933200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-SsbpjQbVzVRmltmCEzy8TbRcSVQ%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=2200832644569108734&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+
 ## 后续
 
-*  整个安装过程参考了jekyll官网，注意jekyll还有一个简体中文官网，不过比较坑（我就被坑了），有些内容没有翻译过来，有可能会走弯路，建议如果想看中文的相关资料，也要中英对照着阅读。[jekyll中文网 http://jekyllcn.com](http://jekyllcn.com), [jekyll英文网 http://jekyllrb.com](http://jekyllrb.com)
 *  jekyll中的css是用sass写的，当然直接在`_sass/_layout.scss`中添加css也是可以的。
 *  本文是用Markdown格式来写的，相关语法可参考： [Markdown 语法说明 (简体中文版) http://wowubuntu.com/markdown/](http://wowubuntu.com/markdown/)  
 *  按照本文的说明搭建完博客后，用`github Pages`托管就可以看到了。注意，在github上面好像不支持rouge，所以要push到github上时，我将配置文件_config.yml中的代码高亮改变为`highlighter: pygments`就可以了
 *  博客默认是没有评论系统的，本文的评论系统使用了多说，详细安装办法可访问[多说官网 http://duoshuo.com/](http://duoshuo.com/)，当然也可以使用[搜狐畅言 http://changyan.sohu.com/](http://changyan.sohu.com/)作为评论系统。
 *  也可以绑定自己的域名，如果没有域名，可以在[godaddy http://www.godaddy.com/](http://www.godaddy.com/)上将域名放入购物车等待降价，买之。
-*  祝各位新年快乐！
 
 ---
 
